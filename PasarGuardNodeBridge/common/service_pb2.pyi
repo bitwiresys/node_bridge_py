@@ -114,6 +114,19 @@ class StatsOnlineIpListResponse(_message.Message):
     ips: _containers.ScalarMap[str, int]
     def __init__(self, name: _Optional[str] = ..., ips: _Optional[_Mapping[str, int]] = ...) -> None: ...
 
+class StatsAllOnlineIpListResponse(_message.Message):
+    __slots__ = ("users",)
+    class UsersEntry(_message.Message):
+        __slots__ = ("key", "value")
+        KEY_FIELD_NUMBER: _ClassVar[int]
+        VALUE_FIELD_NUMBER: _ClassVar[int]
+        key: str
+        value: StatsOnlineIpListResponse
+        def __init__(self, key: _Optional[str] = ..., value: _Optional[_Union[StatsOnlineIpListResponse, _Mapping]] = ...) -> None: ...
+    USERS_FIELD_NUMBER: _ClassVar[int]
+    users: _containers.MessageMap[str, StatsOnlineIpListResponse]
+    def __init__(self, users: _Optional[_Mapping[str, StatsOnlineIpListResponse]] = ...) -> None: ...
+
 class Latency(_message.Message):
     __slots__ = ("name", "alive", "delay", "link", "last_seen_time", "last_try_time", "source")
     NAME_FIELD_NUMBER: _ClassVar[int]
@@ -215,12 +228,14 @@ class Shadowsocks(_message.Message):
     def __init__(self, password: _Optional[str] = ..., method: _Optional[str] = ...) -> None: ...
 
 class Wireguard(_message.Message):
-    __slots__ = ("public_key", "peer_ips")
+    __slots__ = ("public_key", "peer_ips", "pre_shared_key")
     PUBLIC_KEY_FIELD_NUMBER: _ClassVar[int]
     PEER_IPS_FIELD_NUMBER: _ClassVar[int]
+    PRE_SHARED_KEY_FIELD_NUMBER: _ClassVar[int]
     public_key: str
     peer_ips: _containers.RepeatedScalarFieldContainer[str]
-    def __init__(self, public_key: _Optional[str] = ..., peer_ips: _Optional[_Iterable[str]] = ...) -> None: ...
+    pre_shared_key: str
+    def __init__(self, public_key: _Optional[str] = ..., peer_ips: _Optional[_Iterable[str]] = ..., pre_shared_key: _Optional[str] = ...) -> None: ...
 
 class Hysteria(_message.Message):
     __slots__ = ("auth",)
