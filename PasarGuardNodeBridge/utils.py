@@ -28,6 +28,7 @@ def create_proxy(
     shadowsocks_method: str | None = None,
     wireguard_public_key: str | None = None,
     wireguard_peer_ips: list[str] | None = None,
+    wireguard_pre_shared_key: str | None = None,
     hysteria_auth: str | None = None,
 ) -> Proxy:
     if wireguard_peer_ips is None:
@@ -38,7 +39,11 @@ def create_proxy(
         vless=Vless(id=vless_id, flow=vless_flow),
         trojan=Trojan(password=trojan_password),
         shadowsocks=Shadowsocks(password=shadowsocks_password, method=shadowsocks_method),
-        wireguard=Wireguard(public_key=wireguard_public_key, peer_ips=wireguard_peer_ips),
+        wireguard=Wireguard(
+            public_key=wireguard_public_key,
+            peer_ips=wireguard_peer_ips,
+            pre_shared_key=wireguard_pre_shared_key,
+        ),
         hysteria=Hysteria(auth=hysteria_auth),
     )
 

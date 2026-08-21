@@ -28,7 +28,7 @@ Homepage = "https://github.com/PasarGuard/node_bridge_py"
 Repository = "https://github.com/PasarGuard/node_bridge_py.git"
 
 [dependency-groups]
-dev = ["grpcio-tools>=1.80.0"]
+dev = ["grpcio-tools>=1.80.0", "pytest>=8.0.0"]
 
 [tool.ruff]
 line-length = 120
